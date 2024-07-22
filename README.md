@@ -108,3 +108,25 @@
 ```html
 <input :value="value" @input="onInput" />
 ```
+
+### Lesson 4
+
+#### Styling
+
+```html
+<div :style="{ backgroundColor: 'red', 'margin-top': '10px' }"></div>
+```
+
+#### Classes
+
+```javascript
+computed: {
+  classes() {
+    return ["default", { active: this.isActive, error: this.isError }]
+  }
+}
+```
+
+```html
+<div :class="classes"></div>
+```
