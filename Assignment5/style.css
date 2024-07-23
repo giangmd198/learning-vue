@@ -1,0 +1,7 @@
+.item:hover .btn-x {
+  opacity: 1;
+}
+
+.btn-x {
+  opacity: 0;
+}

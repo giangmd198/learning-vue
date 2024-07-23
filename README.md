@@ -45,9 +45,13 @@
 #### v-on
 
 ```html
+<!-- prevent default -->
 <form v-on:submit.default="method"></form>
 <input v-on:input="onInput" v-on:keyup.enter="onEnter" />
-<button v-on:click.left="onLeftClick"></button>
+<!-- passing window event argument -->
+<button v-on:click.left="onLeftClick($event)"></button>
+<!-- stop propagation -->
+<div @click.stop="onClick"></div>
 ```
 
 #### v-once
@@ -130,3 +134,49 @@ computed: {
 ```html
 <div :class="classes"></div>
 ```
+
+### Lesson 5
+
+#### v-if, v-else and v-else-if
+
+```html
+<div v-if="!data.length">There is no data</div>
+<!-- v-else-if need to be right after v-if/v-else-if -->
+<div v-else-if="data.length === 1">There is only one record</div>
+<!-- v-else need to be right after v-if/v-else-if -->
+<div v-else>There are some records</div>
+```
+
+#### v-show
+
+```html
+<div v-show="isShow">Show/Hide</div>
+```
+
+#### v-for
+
+```html
+<li v-for="goal in goals">{{ goal }}</li>
+<li v-for="(goal, index) in goals">{{ index + 1}}. <b>{{ goal }}</b></li>
+<li v-for="(value, key) in { name: 'Max', age: 31 }">{{ key }}: {{ value }}</li>
+<!-- Print from 1 to 10 -->
+<li v-for="num in 10">{{ num }}</li>
+```
+
+```javascript
+{
+  data() {
+    return {
+      goals: [...]
+    }
+  }
+}
+```
+
+#### Lists and Keys
+
+```html
+<li v-for="goal in goals" :key="goal">{{ goal }}</li>
+```
+
+> **_Key should be assigned to a unique value_**
